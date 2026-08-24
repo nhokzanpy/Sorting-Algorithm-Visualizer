@@ -1,90 +1,272 @@
-\# Sorting Algorithm Visualizer
-
-
+# Sorting Algorithm Visualizer
 
 Simulation and visualization of basic internal sorting algorithms using C++ and Qt.
 
-
-
-\## Project
-
-
+## Project
 
 Course project #32: Basic Internal Sorting Algorithms Simulation.
 
+## Algorithms
 
+- Bubble Sort
+- Selection Sort
+- Insertion Sort
+- Merge Sort
 
-\## Algorithms
+## Main Features
 
+- Step-by-step sorting visualization
+- Play, Pause, Next Step, Reset
+- Random and custom array input
+- Adjustable animation speed
+- Comparison and swap/move statistics
+- Execution time measurement
+- Algorithm benchmarking
+- Student data sorting demonstration
+- Algorithm theory and complexity information
 
+## Technology
 
-\- Bubble Sort
+- C++17
+- Qt 6
+- Qt Widgets
+- CMake
+- MinGW 64-bit
 
-\- Selection Sort
+## Project Structure
 
-\- Insertion Sort
+```text
+SortingVisualizer/
+├── algorithms/
+├── models/
+├── benchmark/
+├── widgets/
+├── pages/
+├── resources/
+├── main.cpp
+├── mainwindow.cpp
+├── mainwindow.h
+├── mainwindow.ui
+├── CMakeLists.txt
+├── .gitignore
+└── README.md
+```
 
-\- Merge Sort
+---
 
+# Project Progress
 
+## Phase 1 - Project Structure and Base Setup ✅
 
-\## Main Features
+Completed:
 
+- Created the initial Qt Widgets project
+- Configured CMake
+- Added `.gitignore`
+- Added README
+- Removed build and Qt Creator cache files from Git tracking
+- Prepared the project folder structure:
+  - `algorithms`
+  - `models`
+  - `benchmark`
+  - `widgets`
+  - `pages`
+  - `resources`
 
+---
 
-\- Step-by-step sorting visualization
+## Phase 2 - Sorting Models ✅
 
-\- Play, Pause, Next Step, Reset
+Implemented the core data models used by the sorting engine.
 
-\- Comparison and swap/move statistics
+### SortingStep
 
-\- Execution time measurement
+Stores information about each individual sorting action.
 
-\- Algorithm benchmarking
+Supported step types:
 
-\- Student data sorting demonstration
+- Compare
+- Swap
+- Move
+- MarkSorted
+- Merge
+- Complete
 
-\- Algorithm theory and complexity information
+Each step can contain:
 
+- Current array state
+- First active index
+- Second active index
+- Step type
+- Description
 
+### SortingStatistics
 
-\## Technology
+Tracks:
 
+- Comparisons
+- Swaps
+- Moves
+- Execution time
 
+---
 
-\- C++17
+## Phase 3 - Bubble Sort Algorithm ✅
 
-\- Qt 6
+Implemented Bubble Sort with step-by-step execution data.
 
-\- Qt Widgets
+Features:
 
-\- CMake
+- Compare steps
+- Swap steps
+- Sorted-position markers
+- Early exit optimization
+- Comparison counting
+- Swap counting
+- Move counting
+- Execution time measurement
 
-\- MinGW 64-bit
+### Test Example
 
+Input:
 
+```text
+8 3 6 1 5
+```
 
-\## Planned Modules
+Output:
 
+```text
+1 3 5 6 8
+```
 
+Statistics:
 
-\- algorithms
+```text
+Comparisons: 10
+Swaps: 7
+Moves: 21
+```
 
-\- models
+The result was verified through the Qt Application Output.
 
-\- benchmark
+---
 
-\- widgets
+## Phase 4 - Bubble Sort Visualization ✅
 
-\- pages
+Implemented the first complete visualization module.
 
-\- resources
+### Input Controls
 
+- Custom array input
+- Random array generation
+- Bubble Sort algorithm selector
+- Adjustable animation speed
 
+### Playback Controls
 
-\## Status
+- Play
+- Pause
+- Next Step
+- Reset
 
+### Visualization
 
+- Bar chart visualization
+- Value labels
+- Array index labels
+- Step-by-step updates
+- Persistent sorted positions
+- Complete-state visualization
 
-Phase 1 - Project structure and base setup.
+### Visual States
 
+| State | Color |
+| --- | --- |
+| Normal | Gray |
+| Comparing | Amber |
+| Swapping | Red |
+| Sorted | Green |
+
+### Statistics
+
+Statistics update progressively during the animation:
+
+- Comparisons
+- Swaps
+- Moves
+
+Execution time is also displayed after the sorting steps are generated.
+
+### UI Improvements
+
+- Dark theme
+- Styled input fields
+- Styled buttons
+- Blue Play button
+- Orange/Red Reset button
+- Visualization container
+- Statistics cards
+- Status bar
+- Color legend
+- Improved margins and spacing
+- Clear section labels:
+  - Input Data
+  - Algorithm
+  - Speed
+
+### Tested Behavior
+
+Verified:
+
+- Next Step
+- Compare highlighting
+- Swap highlighting
+- Play
+- Pause
+- Reset
+- Progressive statistics
+- Persistent sorted bars
+- All bars turn green when sorting is complete
+
+---
+
+# Development Roadmap
+
+- [x] Phase 1 - Project structure and base setup
+- [x] Phase 2 - Sorting step and statistics models
+- [x] Phase 3 - Bubble Sort implementation
+- [x] Phase 4 - Bubble Sort visualization
+- [ ] Phase 5 - Selection Sort and Insertion Sort
+- [ ] Phase 6 - Merge Sort
+- [ ] Phase 7 - Algorithm benchmark comparison
+- [ ] Phase 8 - Student sorting module
+- [ ] Phase 9 - Theory page
+- [ ] Phase 10 - UI polish and final testing
+
+---
+
+# Current Status
+
+The project currently supports a complete Bubble Sort workflow:
+
+```text
+Input Array
+    ↓
+Bubble Sort Engine
+    ↓
+SortingStep Sequence
+    ↓
+Sorting Visualizer
+    ↓
+Play / Pause / Next / Reset
+    ↓
+Statistics + Visual State
+```
+
+The next development stage is:
+
+```text
+Phase 5
+Selection Sort + Insertion Sort
+```
