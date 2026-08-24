@@ -231,13 +231,52 @@ Verified:
 
 ---
 
+
+## Phase 5 - Selection Sort and Insertion Sort ✅
+
+Implemented two additional sorting algorithms and refactored the visualization UI.
+
+### Selection Sort
+
+- Minimum-value search for each pass
+- Compare and swap steps
+- Sorted-position markers
+- Comparison, swap and move statistics
+- Full visualization support
+
+### Insertion Sort
+
+- Step-by-step insertion
+- Compare and move steps
+- Sorted-prefix visualization
+- Comparison and move statistics
+- Full visualization support
+
+### UI Refactor
+
+- Added ControlsPanel
+- Added StatisticsPanel
+- Reduced responsibilities inside VisualizerPage
+- Prepared the UI for additional algorithms
+
+### Tested Behavior
+
+- Bubble Sort still works after refactoring
+- Selection Sort visualization verified
+- Insertion Sort visualization verified
+- Play / Pause / Next / Reset verified
+- Random input and algorithm switching verified
+- Progressive statistics verified
+
+---
+
 # Development Roadmap
 
 - [x] Phase 1 - Project structure and base setup
 - [x] Phase 2 - Sorting step and statistics models
 - [x] Phase 3 - Bubble Sort implementation
 - [x] Phase 4 - Bubble Sort visualization
-- [ ] Phase 5 - Selection Sort and Insertion Sort
+- [x] Phase 5 - Selection Sort and Insertion Sort
 - [ ] Phase 6 - Merge Sort
 - [ ] Phase 7 - Algorithm benchmark comparison
 - [ ] Phase 8 - Student sorting module
@@ -267,6 +306,6 @@ Statistics + Visual State
 The next development stage is:
 
 ```text
-Phase 5
-Selection Sort + Insertion Sort
+Phase 6
+Merge Sort
 ```
