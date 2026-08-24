@@ -11,6 +11,8 @@ qt_add_executable(SortingVisualizer
     mainwindow.cpp
     mainwindow.h
     mainwindow.ui
+    models/sortingstatistics.h
+    models/sortingstep.h
 )
 
 target_link_libraries(SortingVisualizer
