@@ -15,6 +15,10 @@ qt_add_executable(SortingVisualizer
     models/sortingstep.h
     algorithms/bubblesort.h
     algorithms/bubblesort.cpp
+    widgets/sortingvisualizer.h
+    widgets/sortingvisualizer.cpp
+    pages/visualizerpage.h
+    pages/visualizerpage.cpp
 )
 
 target_link_libraries(SortingVisualizer
