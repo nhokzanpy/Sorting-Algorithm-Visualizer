@@ -8,14 +8,9 @@
 #include "../models/sortingstep.h"
 #include "../models/sortingstatistics.h"
 
-class QLineEdit;
-class QPushButton;
-class QComboBox;
-class QSlider;
-class QLabel;
-
+class StatisticsPanel;
 class SortingVisualizer;
-
+class ControlsPanel;
 class VisualizerPage : public QWidget
 {
     Q_OBJECT
@@ -36,21 +31,9 @@ private:
     void loadInputData();
     void updateStatistics();
 
-    QLineEdit *m_inputEdit;
-    QComboBox *m_algorithmCombo;
+    ControlsPanel *m_controlsPanel;
 
-    QPushButton *m_randomButton;
-    QPushButton *m_playButton;
-    QPushButton *m_pauseButton;
-    QPushButton *m_nextButton;
-    QPushButton *m_resetButton;
-
-    QSlider *m_speedSlider;
-
-    QLabel *m_comparisonsLabel;
-    QLabel *m_swapsLabel;
-    QLabel *m_timeLabel;
-    QLabel *m_statusLabel;
+    StatisticsPanel *m_statisticsPanel;
 
     SortingVisualizer *m_visualizer;
 

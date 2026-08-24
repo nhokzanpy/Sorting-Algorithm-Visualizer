@@ -19,6 +19,14 @@ qt_add_executable(SortingVisualizer
     widgets/sortingvisualizer.cpp
     pages/visualizerpage.h
     pages/visualizerpage.cpp
+    algorithms/selectionsort.h
+    algorithms/selectionsort.cpp
+    algorithms/insertionsort.h
+    algorithms/insertionsort.cpp
+    widgets/statisticspanel.h
+    widgets/statisticspanel.cpp
+    widgets/controlspanel.h
+    widgets/controlspanel.cpp
 )
 
 target_link_libraries(SortingVisualizer
