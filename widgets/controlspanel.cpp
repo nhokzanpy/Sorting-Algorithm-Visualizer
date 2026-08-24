@@ -109,7 +109,9 @@ ControlsPanel::ControlsPanel(QWidget *parent)
         "Insertion Sort"
         );
 
-
+    m_algorithmCombo->addItem(
+        "Merge Sort"
+        );
     m_playButton =
         new QPushButton("Play");
 

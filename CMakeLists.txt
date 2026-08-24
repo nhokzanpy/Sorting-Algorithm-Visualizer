@@ -27,6 +27,8 @@ qt_add_executable(SortingVisualizer
     widgets/statisticspanel.cpp
     widgets/controlspanel.h
     widgets/controlspanel.cpp
+    algorithms/mergesort.h
+    algorithms/mergesort.cpp
 )
 
 target_link_libraries(SortingVisualizer

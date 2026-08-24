@@ -182,6 +182,15 @@ void SortingVisualizer::paintEvent(QPaintEvent *event)
                     68
                     );
             }
+            else if (m_stepType == SortingStepType::Merge)
+            {
+                // Cyan / Blue
+                color = QColor(
+                    56,
+                    189,
+                    248
+                    );
+            }
             else if (m_stepType ==
                      SortingStepType::MarkSorted)
             {

@@ -7,7 +7,7 @@
 #include "../algorithms/bubblesort.h"
 #include "../algorithms/selectionsort.h"
 #include "../algorithms/insertionsort.h"
-
+#include "../algorithms/mergesort.h"
 #include <QColor>
 #include <QHBoxLayout>
 #include <QLabel>
@@ -261,6 +261,16 @@ void VisualizerPage::setupUi()
             )
         );
 
+    legendLayout->addWidget(
+        createLegendItem(
+            "Merging",
+            QColor(
+                56,
+                189,
+                248
+                )
+            )
+        );
 
     legendLayout->addWidget(
         createLegendItem(
@@ -509,6 +519,17 @@ void VisualizerPage::startSorting()
         {
             m_steps =
                 InsertionSort::sort(
+                    m_originalData,
+                    m_statistics
+                    );
+        }
+        else if (
+            algorithm ==
+            "Merge Sort"
+            )
+        {
+            m_steps =
+                MergeSort::sort(
                     m_originalData,
                     m_statistics
                     );
