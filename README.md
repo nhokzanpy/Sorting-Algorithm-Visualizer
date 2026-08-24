@@ -270,6 +270,38 @@ Implemented two additional sorting algorithms and refactored the visualization U
 
 ---
 
+
+## Phase 6 - Merge Sort ✅
+
+Implemented Merge Sort using divide-and-conquer with full visualization support.
+
+### Merge Sort
+
+- Recursive divide-and-conquer implementation
+- Compare steps during merge
+- Move steps when writing values back
+- Merge-range visualization
+- Comparison counting
+- Move counting
+- Execution time measurement
+- Full sorted-state visualization
+
+### Visualization
+
+- Added cyan Merging state
+- Added Merging item to the color legend
+- Merge ranges are highlighted after each merge operation
+
+### Tested Behavior
+
+- Merge Sort produces correctly sorted output
+- Play / Pause / Next / Reset verified
+- Progressive comparisons and moves verified
+- Merge highlighting verified
+- Final sorted-state highlighting verified
+
+---
+
 # Development Roadmap
 
 - [x] Phase 1 - Project structure and base setup
@@ -277,7 +309,7 @@ Implemented two additional sorting algorithms and refactored the visualization U
 - [x] Phase 3 - Bubble Sort implementation
 - [x] Phase 4 - Bubble Sort visualization
 - [x] Phase 5 - Selection Sort and Insertion Sort
-- [ ] Phase 6 - Merge Sort
+- [x] Phase 6 - Merge Sort
 - [ ] Phase 7 - Algorithm benchmark comparison
 - [ ] Phase 8 - Student sorting module
 - [ ] Phase 9 - Theory page
@@ -306,6 +338,6 @@ Statistics + Visual State
 The next development stage is:
 
 ```text
-Phase 6
-Merge Sort
+Phase 7
+Algorithm benchmark comparison
 ```
