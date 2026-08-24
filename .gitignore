@@ -1,0 +1,36 @@
+# Build directories
+build/
+build-*/
+cmake-build-*/
+
+# Qt Creator
+*.user
+*.user.*
+.qtc_clangd/
+.qtcreator/
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+compile_commands.json
+
+# MinGW / C++
+*.o
+*.obj
+*.exe
+*.dll
+*.a
+*.lib
+
+# Debug / temporary
+*.log
+*.tmp
+*.bak
+*~
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store

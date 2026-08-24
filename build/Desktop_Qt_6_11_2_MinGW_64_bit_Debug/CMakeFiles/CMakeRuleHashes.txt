@@ -1,3 +1,0 @@
-# Hashes of file build rules.
-5e3a211ed8b5f7b4302d84e299da2b82 CMakeFiles/SortingVisualizer_autogen
-689ce724699633b0336eb37754280074 SortingVisualizer_autogen/timestamp
