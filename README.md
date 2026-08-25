@@ -333,6 +333,44 @@ Implemented a benchmark module for comparing all supported sorting algorithms on
 
 ---
 
+
+## Phase 8 - Student Sorting Module ✅
+
+Added a dedicated student practice module for running and reviewing sorting results independently from the main visualizer.
+
+### Student Module
+
+- Added StudentSortResult data model
+- Added StudentSortRunner
+- Supports Bubble Sort, Selection Sort, Insertion Sort and Merge Sort
+- Accepts custom student input data
+- Produces sorted output and algorithm statistics
+
+### Student Lab UI
+
+- Added StudentPanel
+- Added algorithm selector, Sort and Clear controls
+- Displays input, output, comparisons, swaps, moves and execution time
+- Keeps recent sorting results for review
+- Added input validation and status feedback
+
+### Layout Integration
+
+- Integrated Student Lab into VisualizerPage
+- Student Lab and Algorithm Benchmark are displayed side-by-side
+- Main sorting visualization remains the primary focus of the interface
+- Benchmark comparison and best-metric highlighting remain available
+
+### Tested Behavior
+
+- Custom input sorting verified
+- Correct sorted output verified
+- Statistics display verified
+- All four algorithms available in Student Lab
+- Student Lab and Benchmark layout tested successfully
+
+---
+
 # Development Roadmap
 
 - [x] Phase 1 - Project structure and base setup
@@ -342,7 +380,7 @@ Implemented a benchmark module for comparing all supported sorting algorithms on
 - [x] Phase 5 - Selection Sort and Insertion Sort
 - [x] Phase 6 - Merge Sort
 - [x] Phase 7 - Algorithm benchmark comparison
-- [ ] Phase 8 - Student sorting module
+- [x] Phase 8 - Student sorting module
 - [ ] Phase 9 - Theory page
 - [ ] Phase 10 - UI polish and final testing
 
@@ -369,6 +407,6 @@ Statistics + Visual State
 The next development stage is:
 
 ```text
-Phase 8
-Student sorting module
+Phase 9
+Theory page
 ```
