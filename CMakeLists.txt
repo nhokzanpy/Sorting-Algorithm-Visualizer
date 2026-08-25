@@ -39,6 +39,11 @@ qt_add_executable(SortingVisualizer
     student/studentsortrunner.cpp
     widgets/studentpanel.h
     widgets/studentpanel.cpp
+    models/multisizebenchmarkresult.h
+    benchmark/multisizebenchmarkrunner.h
+    benchmark/multisizebenchmarkrunner.cpp
+    widgets/multisizebenchmarkpanel.h
+    widgets/multisizebenchmarkpanel.cpp
 
 )
 

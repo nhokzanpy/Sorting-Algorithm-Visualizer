@@ -3,7 +3,7 @@
 #include "../widgets/controlspanel.h"
 #include "../widgets/sortingvisualizer.h"
 #include "../widgets/statisticspanel.h"
-#include "../widgets/benchmarkpanel.h"
+#include "../widgets/multisizebenchmarkpanel.h"
 #include "../algorithms/bubblesort.h"
 #include "../algorithms/selectionsort.h"
 #include "../algorithms/insertionsort.h"
@@ -14,7 +14,6 @@
 #include <QRandomGenerator>
 #include <QStringList>
 #include <QVBoxLayout>
-#include "../benchmark/benchmarkrunner.h"
 #include "../widgets/studentpanel.h"
 VisualizerPage::VisualizerPage(QWidget *parent)
     : QWidget(parent)
@@ -360,7 +359,7 @@ void VisualizerPage::setupUi()
         );
 
 
-    // Benchmark container
+    // Multi-size Benchmark container
 
     auto *benchmarkContainer =
         new QWidget;
@@ -383,17 +382,17 @@ void VisualizerPage::setupUi()
             );
 
     benchmarkLayout->setContentsMargins(
-        14,
-        14,
-        14,
-        12
+        8,
+        8,
+        8,
+        8
         );
 
-    m_benchmarkPanel =
-        new BenchmarkPanel;
+    auto *multiSizeBenchmarkPanel =
+        new MultiSizeBenchmarkPanel;
 
     benchmarkLayout->addWidget(
-        m_benchmarkPanel
+        multiSizeBenchmarkPanel
         );
 
 
@@ -515,7 +514,6 @@ void VisualizerPage::generateRandomData()
 
     m_currentStep = 0;
 
-    m_benchmarkPanel->clearResults();
     m_displayComparisons = 0;
     m_displaySwaps = 0;
     m_displayMoves = 0;
@@ -659,15 +657,6 @@ void VisualizerPage::startSorting()
         updateStatistics();
     }
 
-    const std::vector<BenchmarkResult> benchmarkResults =
-        BenchmarkRunner::run(
-            m_originalData
-            );
-
-    m_benchmarkPanel->setResults(
-        benchmarkResults
-        );
-
     const int delay =
         850 -
         m_controlsPanel
@@ -732,7 +721,6 @@ void VisualizerPage::resetSorting()
 
     m_currentStep = 0;
 
-    m_benchmarkPanel->clearResults();
     m_displayComparisons = 0;
     m_displaySwaps = 0;
     m_displayMoves = 0;
