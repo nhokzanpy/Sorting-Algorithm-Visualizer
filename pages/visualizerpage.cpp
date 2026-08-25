@@ -15,7 +15,7 @@
 #include <QStringList>
 #include <QVBoxLayout>
 #include "../benchmark/benchmarkrunner.h"
-
+#include "../widgets/studentpanel.h"
 VisualizerPage::VisualizerPage(QWidget *parent)
     : QWidget(parent)
 {
@@ -303,11 +303,112 @@ void VisualizerPage::setupUi()
         m_statisticsPanel
         );
 
+
+    // =====================================================
+    // Student Lab + Benchmark
+    // =====================================================
+
+    auto *toolsLayout =
+        new QHBoxLayout;
+
+    toolsLayout->setSpacing(
+        12
+        );
+
+    toolsLayout->setContentsMargins(
+        0,
+        0,
+        0,
+        0
+        );
+
+
+    // Student Lab container
+
+    auto *studentContainer =
+        new QWidget;
+
+    studentContainer->setObjectName(
+        "studentContainer"
+        );
+
+    studentContainer->setStyleSheet(
+        "QWidget#studentContainer {"
+        "background-color: rgb(15, 23, 42);"
+        "border: 1px solid rgb(51, 65, 85);"
+        "border-radius: 12px;"
+        "}"
+        );
+
+    auto *studentLayout =
+        new QVBoxLayout(
+            studentContainer
+            );
+
+    studentLayout->setContentsMargins(
+        14,
+        14,
+        14,
+        12
+        );
+
+    m_studentPanel =
+        new StudentPanel;
+
+    studentLayout->addWidget(
+        m_studentPanel
+        );
+
+
+    // Benchmark container
+
+    auto *benchmarkContainer =
+        new QWidget;
+
+    benchmarkContainer->setObjectName(
+        "benchmarkContainer"
+        );
+
+    benchmarkContainer->setStyleSheet(
+        "QWidget#benchmarkContainer {"
+        "background-color: rgb(15, 23, 42);"
+        "border: 1px solid rgb(51, 65, 85);"
+        "border-radius: 12px;"
+        "}"
+        );
+
+    auto *benchmarkLayout =
+        new QVBoxLayout(
+            benchmarkContainer
+            );
+
+    benchmarkLayout->setContentsMargins(
+        14,
+        14,
+        14,
+        12
+        );
+
     m_benchmarkPanel =
         new BenchmarkPanel;
 
-    mainLayout->addWidget(
+    benchmarkLayout->addWidget(
         m_benchmarkPanel
+        );
+
+
+    toolsLayout->addWidget(
+        studentContainer,
+        1
+        );
+
+    toolsLayout->addWidget(
+        benchmarkContainer,
+        1
+        );
+
+    mainLayout->addLayout(
+        toolsLayout
         );
 
     // =====================================================

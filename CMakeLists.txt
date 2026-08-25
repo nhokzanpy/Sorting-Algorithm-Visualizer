@@ -34,6 +34,12 @@ qt_add_executable(SortingVisualizer
     benchmark/benchmarkrunner.cpp
     widgets/benchmarkpanel.h
     widgets/benchmarkpanel.cpp
+    models/studentsortresult.h
+    student/studentsortrunner.h
+    student/studentsortrunner.cpp
+    widgets/studentpanel.h
+    widgets/studentpanel.cpp
+
 )
 
 target_link_libraries(SortingVisualizer

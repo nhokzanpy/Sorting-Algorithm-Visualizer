@@ -11,6 +11,7 @@ class BenchmarkPanel;
 class StatisticsPanel;
 class SortingVisualizer;
 class ControlsPanel;
+class StudentPanel;
 class VisualizerPage : public QWidget
 {
     Q_OBJECT
@@ -38,6 +39,8 @@ private:
     BenchmarkPanel *m_benchmarkPanel;
 
     SortingVisualizer *m_visualizer;
+
+    StudentPanel *m_studentPanel;
 
     QTimer m_timer;
 
