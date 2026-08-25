@@ -371,6 +371,53 @@ Added a dedicated student practice module for running and reviewing sorting resu
 
 ---
 
+
+## Phase 9 - Multi-size Performance Testing ✅
+
+Added performance testing across multiple input sizes to compare algorithm behavior beyond a single dataset.
+
+### Multi-size Benchmark Engine
+
+- Added MultiSizeBenchmarkResult model
+- Added MultiSizeBenchmarkRunner
+- Benchmarks Bubble Sort, Selection Sort, Insertion Sort and Merge Sort
+- Uses the same generated dataset for all algorithms at each input size
+- Supports preset and custom input sizes
+- Uses lightweight benchmark implementations without generating visualization steps
+
+### Performance Metrics
+
+- Records input size
+- Records comparisons
+- Records swaps
+- Records moves
+- Measures execution time in milliseconds
+
+### Multi-size Benchmark UI
+
+- Added preset sizes: 10, 50, 100, 500 and 1000
+- Added custom comma-separated size input
+- Added Run Benchmark and Clear controls
+- Added benchmark result table
+- Added Time vs Input Size performance chart
+- Added algorithm legend and benchmark status footer
+
+### Performance Improvements
+
+- Removed visualization-step generation from multi-size benchmarking
+- Reduced memory and processing overhead
+- Prevented UI freezing during larger benchmark runs
+
+### Tested Behavior
+
+- Preset benchmark sizes verified
+- 20-result benchmark run verified
+- Performance chart rendering verified
+- Result table verified
+- Application remains responsive during benchmark runs
+
+---
+
 # Development Roadmap
 
 - [x] Phase 1 - Project structure and base setup
@@ -381,7 +428,7 @@ Added a dedicated student practice module for running and reviewing sorting resu
 - [x] Phase 6 - Merge Sort
 - [x] Phase 7 - Algorithm benchmark comparison
 - [x] Phase 8 - Student sorting module
-- [ ] Phase 9 - Multi-size Performance Testing
+- [x] Phase 9 - Multi-size Performance Testing
 - [ ] Phase 10 - UI polish and final testing
 
 ---
@@ -407,6 +454,6 @@ Statistics + Visual State
 The next development stage is:
 
 ```text
-Phase 9
-Multi-size Performance Testing
+Phase 10
+UI polish and final testing
 ```
