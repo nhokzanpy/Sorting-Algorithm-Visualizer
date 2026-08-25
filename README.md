@@ -381,7 +381,7 @@ Added a dedicated student practice module for running and reviewing sorting resu
 - [x] Phase 6 - Merge Sort
 - [x] Phase 7 - Algorithm benchmark comparison
 - [x] Phase 8 - Student sorting module
-- [ ] Phase 9 - Theory page
+- [ ] Phase 9 - Multi-size Performance Testing
 - [ ] Phase 10 - UI polish and final testing
 
 ---
@@ -408,5 +408,5 @@ The next development stage is:
 
 ```text
 Phase 9
-Theory page
+Multi-size Performance Testing
 ```
