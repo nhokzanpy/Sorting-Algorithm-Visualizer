@@ -7,7 +7,7 @@
 
 #include "../models/sortingstep.h"
 #include "../models/sortingstatistics.h"
-
+class BenchmarkPanel;
 class StatisticsPanel;
 class SortingVisualizer;
 class ControlsPanel;
@@ -34,6 +34,8 @@ private:
     ControlsPanel *m_controlsPanel;
 
     StatisticsPanel *m_statisticsPanel;
+
+    BenchmarkPanel *m_benchmarkPanel;
 
     SortingVisualizer *m_visualizer;
 
