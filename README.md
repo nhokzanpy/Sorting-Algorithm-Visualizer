@@ -302,6 +302,37 @@ Implemented Merge Sort using divide-and-conquer with full visualization support.
 
 ---
 
+
+## Phase 7 - Algorithm Benchmark Comparison ✅
+
+Implemented a benchmark module for comparing all supported sorting algorithms on the same input data.
+
+### Benchmark Engine
+
+- Added BenchmarkResult data model
+- Added BenchmarkRunner
+- Runs Bubble Sort, Selection Sort, Insertion Sort and Merge Sort on identical input
+- Collects comparisons, swaps, moves and execution time
+
+### Benchmark UI
+
+- Added BenchmarkPanel
+- Added comparison table with five columns
+- Improved row height, header spacing and readability
+- Added best-metric highlighting
+- Supports ties for best values
+
+### Tested Behavior
+
+- All four algorithms appear in the benchmark table
+- Statistics are generated from the same input data
+- Comparisons, swaps and moves verified
+- Execution time displayed in milliseconds
+- Best values highlighted correctly
+- Benchmark results clear correctly on Random and Reset
+
+---
+
 # Development Roadmap
 
 - [x] Phase 1 - Project structure and base setup
@@ -310,7 +341,7 @@ Implemented Merge Sort using divide-and-conquer with full visualization support.
 - [x] Phase 4 - Bubble Sort visualization
 - [x] Phase 5 - Selection Sort and Insertion Sort
 - [x] Phase 6 - Merge Sort
-- [ ] Phase 7 - Algorithm benchmark comparison
+- [x] Phase 7 - Algorithm benchmark comparison
 - [ ] Phase 8 - Student sorting module
 - [ ] Phase 9 - Theory page
 - [ ] Phase 10 - UI polish and final testing
@@ -338,6 +369,6 @@ Statistics + Visual State
 The next development stage is:
 
 ```text
-Phase 7
-Algorithm benchmark comparison
+Phase 8
+Student sorting module
 ```
