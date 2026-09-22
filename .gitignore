@@ -34,3 +34,8 @@ compile_commands.json
 Thumbs.db
 Desktop.ini
 .DS_Store
+# Release / deployment output
+dist/
+release/
+*.zip
+*.rar

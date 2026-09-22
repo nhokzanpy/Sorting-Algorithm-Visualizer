@@ -1,37 +1,62 @@
 # Sorting Algorithm Visualizer
 
-Simulation and visualization of basic internal sorting algorithms using C++ and Qt.
+Desktop application for learning and visualizing four basic internal sorting algorithms using C++ and Qt 6.
 
-## Project
+## Scope
 
-Course project #32: Basic Internal Sorting Algorithms Simulation.
-
-## Algorithms
+The project focuses on four in-memory sorting algorithms for integer arrays sorted in ascending order:
 
 - Bubble Sort
 - Selection Sort
 - Insertion Sort
 - Merge Sort
 
+The application supports step-by-step visualization, statistics, benchmark comparison, student practice, and multi-size performance testing.
+
 ## Main Features
 
-- Step-by-step sorting visualization
-- Play, Pause, Next Step, Reset
-- Random and custom array input
+### Sorting Visualizer
+
+- Custom integer array input
+- Random array generation
+- Four algorithm choices
 - Adjustable animation speed
-- Comparison and swap/move statistics
-- Execution time measurement
-- Algorithm benchmarking
-- Student data sorting demonstration
-- Algorithm theory and complexity information
+- Play / Pause / Next Step / Reset
+- Step-by-step bar visualization
+- Visual states for comparing, swapping, moving, merging, and sorted elements
+- Progressive comparison / swap / move counters
+- Execution time display
+
+### Algorithm Benchmark
+
+- Runs all four algorithms on the same input data
+- Compares comparisons, swaps, moves, and execution time
+- Highlights tied best metric values
+
+### Student Lab
+
+- Custom integer array input
+- Select any supported algorithm
+- Sorted output and statistics
+- Recent result history
+- Input validation and status feedback
+
+### Multi-size Performance Testing
+
+- Preset sizes: 10, 50, 100, 500, 1000
+- Custom comma-separated sizes
+- Maximum supported benchmark size: 5000 elements
+- Same generated dataset for all four algorithms at each size
+- Result table and Time vs Input Size chart
+- Lightweight benchmark implementation without animation-step generation
 
 ## Technology
 
 - C++17
-- Qt 6
+- Qt 6.5+
 - Qt Widgets
-- CMake
-- MinGW 64-bit
+- CMake 3.19+
+- MinGW 64-bit on Windows
 
 ## Project Structure
 
@@ -40,9 +65,9 @@ SortingVisualizer/
 ├── algorithms/
 ├── models/
 ├── benchmark/
+├── student/
 ├── widgets/
 ├── pages/
-├── resources/
 ├── main.cpp
 ├── mainwindow.cpp
 ├── mainwindow.h
@@ -52,408 +77,114 @@ SortingVisualizer/
 └── README.md
 ```
 
----
+## Build on Windows
 
-# Project Progress
+Open the project in Qt Creator with a Qt 6 kit, or build with CMake.
 
-## Phase 1 - Project Structure and Base Setup ✅
+### Configure
 
-Completed:
-
-- Created the initial Qt Widgets project
-- Configured CMake
-- Added `.gitignore`
-- Added README
-- Removed build and Qt Creator cache files from Git tracking
-- Prepared the project folder structure:
-  - `algorithms`
-  - `models`
-  - `benchmark`
-  - `widgets`
-  - `pages`
-  - `resources`
-
----
-
-## Phase 2 - Sorting Models ✅
-
-Implemented the core data models used by the sorting engine.
-
-### SortingStep
-
-Stores information about each individual sorting action.
-
-Supported step types:
-
-- Compare
-- Swap
-- Move
-- MarkSorted
-- Merge
-- Complete
-
-Each step can contain:
-
-- Current array state
-- First active index
-- Second active index
-- Step type
-- Description
-
-### SortingStatistics
-
-Tracks:
-
-- Comparisons
-- Swaps
-- Moves
-- Execution time
-
----
-
-## Phase 3 - Bubble Sort Algorithm ✅
-
-Implemented Bubble Sort with step-by-step execution data.
-
-Features:
-
-- Compare steps
-- Swap steps
-- Sorted-position markers
-- Early exit optimization
-- Comparison counting
-- Swap counting
-- Move counting
-- Execution time measurement
-
-### Test Example
-
-Input:
-
-```text
-8 3 6 1 5
+```bash
+cmake -S . -B build -G "MinGW Makefiles"
 ```
 
-Output:
+### Build
 
-```text
-1 3 5 6 8
+```bash
+cmake --build build --config Release
 ```
 
-Statistics:
+### Deploy
 
-```text
-Comparisons: 10
-Swaps: 7
-Moves: 21
+The project includes Qt deployment support through `qt_generate_deploy_app_script()`.
+
+```bash
+cmake --install build --config Release --prefix dist
 ```
 
-The result was verified through the Qt Application Output.
+Use the generated `dist` directory to test the application outside Qt Creator.
 
----
+## Development Status
 
-## Phase 4 - Bubble Sort Visualization ✅
+All planned development phases are complete.
 
-Implemented the first complete visualization module.
-
-### Input Controls
-
-- Custom array input
-- Random array generation
-- Bubble Sort algorithm selector
-- Adjustable animation speed
-
-### Playback Controls
-
-- Play
-- Pause
-- Next Step
-- Reset
-
-### Visualization
-
-- Bar chart visualization
-- Value labels
-- Array index labels
-- Step-by-step updates
-- Persistent sorted positions
-- Complete-state visualization
-
-### Visual States
-
-| State | Color |
+| Phase | Status |
 | --- | --- |
-| Normal | Gray |
-| Comparing | Amber |
-| Swapping | Red |
-| Sorted | Green |
-
-### Statistics
-
-Statistics update progressively during the animation:
-
-- Comparisons
-- Swaps
-- Moves
-
-Execution time is also displayed after the sorting steps are generated.
-
-### UI Improvements
-
-- Dark theme
-- Styled input fields
-- Styled buttons
-- Blue Play button
-- Orange/Red Reset button
-- Visualization container
-- Statistics cards
-- Status bar
-- Color legend
-- Improved margins and spacing
-- Clear section labels:
-  - Input Data
-  - Algorithm
-  - Speed
-
-### Tested Behavior
-
-Verified:
-
-- Next Step
-- Compare highlighting
-- Swap highlighting
-- Play
-- Pause
-- Reset
-- Progressive statistics
-- Persistent sorted bars
-- All bars turn green when sorting is complete
-
----
-
-
-## Phase 5 - Selection Sort and Insertion Sort ✅
-
-Implemented two additional sorting algorithms and refactored the visualization UI.
-
-### Selection Sort
-
-- Minimum-value search for each pass
-- Compare and swap steps
-- Sorted-position markers
-- Comparison, swap and move statistics
-- Full visualization support
-
-### Insertion Sort
-
-- Step-by-step insertion
-- Compare and move steps
-- Sorted-prefix visualization
-- Comparison and move statistics
-- Full visualization support
-
-### UI Refactor
-
-- Added ControlsPanel
-- Added StatisticsPanel
-- Reduced responsibilities inside VisualizerPage
-- Prepared the UI for additional algorithms
-
-### Tested Behavior
-
-- Bubble Sort still works after refactoring
-- Selection Sort visualization verified
-- Insertion Sort visualization verified
-- Play / Pause / Next / Reset verified
-- Random input and algorithm switching verified
-- Progressive statistics verified
-
----
-
-
-## Phase 6 - Merge Sort ✅
-
-Implemented Merge Sort using divide-and-conquer with full visualization support.
-
-### Merge Sort
-
-- Recursive divide-and-conquer implementation
-- Compare steps during merge
-- Move steps when writing values back
-- Merge-range visualization
-- Comparison counting
-- Move counting
-- Execution time measurement
-- Full sorted-state visualization
-
-### Visualization
-
-- Added cyan Merging state
-- Added Merging item to the color legend
-- Merge ranges are highlighted after each merge operation
-
-### Tested Behavior
-
-- Merge Sort produces correctly sorted output
-- Play / Pause / Next / Reset verified
-- Progressive comparisons and moves verified
-- Merge highlighting verified
-- Final sorted-state highlighting verified
-
----
-
-
-## Phase 7 - Algorithm Benchmark Comparison ✅
-
-Implemented a benchmark module for comparing all supported sorting algorithms on the same input data.
-
-### Benchmark Engine
-
-- Added BenchmarkResult data model
-- Added BenchmarkRunner
-- Runs Bubble Sort, Selection Sort, Insertion Sort and Merge Sort on identical input
-- Collects comparisons, swaps, moves and execution time
-
-### Benchmark UI
-
-- Added BenchmarkPanel
-- Added comparison table with five columns
-- Improved row height, header spacing and readability
-- Added best-metric highlighting
-- Supports ties for best values
-
-### Tested Behavior
-
-- All four algorithms appear in the benchmark table
-- Statistics are generated from the same input data
-- Comparisons, swaps and moves verified
-- Execution time displayed in milliseconds
-- Best values highlighted correctly
-- Benchmark results clear correctly on Random and Reset
-
----
-
-
-## Phase 8 - Student Sorting Module ✅
-
-Added a dedicated student practice module for running and reviewing sorting results independently from the main visualizer.
-
-### Student Module
-
-- Added StudentSortResult data model
-- Added StudentSortRunner
-- Supports Bubble Sort, Selection Sort, Insertion Sort and Merge Sort
-- Accepts custom student input data
-- Produces sorted output and algorithm statistics
-
-### Student Lab UI
-
-- Added StudentPanel
-- Added algorithm selector, Sort and Clear controls
-- Displays input, output, comparisons, swaps, moves and execution time
-- Keeps recent sorting results for review
-- Added input validation and status feedback
-
-### Layout Integration
-
-- Integrated Student Lab into VisualizerPage
-- Student Lab and Algorithm Benchmark are displayed side-by-side
-- Main sorting visualization remains the primary focus of the interface
-- Benchmark comparison and best-metric highlighting remain available
-
-### Tested Behavior
-
-- Custom input sorting verified
-- Correct sorted output verified
-- Statistics display verified
-- All four algorithms available in Student Lab
-- Student Lab and Benchmark layout tested successfully
-
----
-
-
-## Phase 9 - Multi-size Performance Testing ✅
-
-Added performance testing across multiple input sizes to compare algorithm behavior beyond a single dataset.
-
-### Multi-size Benchmark Engine
-
-- Added MultiSizeBenchmarkResult model
-- Added MultiSizeBenchmarkRunner
-- Benchmarks Bubble Sort, Selection Sort, Insertion Sort and Merge Sort
-- Uses the same generated dataset for all algorithms at each input size
-- Supports preset and custom input sizes
-- Uses lightweight benchmark implementations without generating visualization steps
-
-### Performance Metrics
-
-- Records input size
-- Records comparisons
-- Records swaps
-- Records moves
-- Measures execution time in milliseconds
-
-### Multi-size Benchmark UI
-
-- Added preset sizes: 10, 50, 100, 500 and 1000
-- Added custom comma-separated size input
-- Added Run Benchmark and Clear controls
-- Added benchmark result table
-- Added Time vs Input Size performance chart
-- Added algorithm legend and benchmark status footer
-
-### Performance Improvements
-
-- Removed visualization-step generation from multi-size benchmarking
-- Reduced memory and processing overhead
-- Prevented UI freezing during larger benchmark runs
-
-### Tested Behavior
-
-- Preset benchmark sizes verified
-- 20-result benchmark run verified
-- Performance chart rendering verified
-- Result table verified
-- Application remains responsive during benchmark runs
-
----
-
-# Development Roadmap
-
-- [x] Phase 1 - Project structure and base setup
-- [x] Phase 2 - Sorting step and statistics models
-- [x] Phase 3 - Bubble Sort implementation
-- [x] Phase 4 - Bubble Sort visualization
-- [x] Phase 5 - Selection Sort and Insertion Sort
-- [x] Phase 6 - Merge Sort
-- [x] Phase 7 - Algorithm benchmark comparison
-- [x] Phase 8 - Student sorting module
-- [x] Phase 9 - Multi-size Performance Testing
-- [x] Phase 10 - UI polish and final testing
-
----
-
-# Current Status
-
-The project currently supports a complete Bubble Sort workflow:
+| 1. Project structure and base setup | ✅ |
+| 2. Sorting models and statistics | ✅ |
+| 3. Bubble Sort implementation | ✅ |
+| 4. Bubble Sort visualization | ✅ |
+| 5. Selection Sort and Insertion Sort | ✅ |
+| 6. Merge Sort | ✅ |
+| 7. Algorithm benchmark comparison | ✅ |
+| 8. Student sorting module | ✅ |
+| 9. Multi-size performance testing | ✅ |
+| 10. UI polish and final QA | ✅ |
+
+## Final QA Changes
+
+The final source includes the following stability and cleanup changes:
+
+- Main Visualizer rejects malformed numeric input instead of silently discarding invalid tokens.
+- Sorting steps are regenerated whenever the input data or selected algorithm changes.
+- `Next Step` stops safely when input is invalid instead of advancing through an empty sequence.
+- Multi-size benchmark input is validated and limited to 5000 elements.
+- The benchmark runner enforces the same 5000-element safety limit.
+- Startup-only Bubble Sort debug output was removed from `main.cpp`.
+- Qt Creator user-specific settings and local build artifacts are not part of the repository.
+- Core sorting, benchmark, and student-runner checks pass in a standalone C++ test harness.
+- A full Qt GUI configure/build was not run in this environment because Qt 6 development files are unavailable here; perform the final Windows Release build in the project Qt 6 / MinGW environment.
+
+## Recommended QA Test Cases
+
+For each algorithm, verify:
 
 ```text
-Input Array
-    ↓
-Bubble Sort Engine
-    ↓
-SortingStep Sequence
-    ↓
-Sorting Visualizer
-    ↓
-Play / Pause / Next / Reset
-    ↓
-Statistics + Visual State
+5, 4, 3, 2, 1
+1, 2, 3, 4, 5
+3, 3, 3, 3
+-5, 10, 0, -2, 7
+8, 3, 6, 1, 5
+1
 ```
 
-The next development stage is:
+Invalid input examples:
 
 ```text
-Completed
-All planned phases finished
+8, 3, abc, 5
+hello
 ```
+
+Also verify Play, Pause, Next Step, Reset, Random, algorithm switching, input changes, repeated runs, Student Lab, and Multi-size Benchmark presets 10 / 50 / 100 / 500 / 1000. A valid custom benchmark size such as 2000 should run, while values above 5000 should be rejected.
+
+## Architecture Summary
+
+```text
+User Input
+    ↓
+ControlsPanel
+    ↓
+VisualizerPage
+    ├── Sorting Algorithms
+    ├── SortingStep / SortingStatistics
+    ├── SortingVisualizer
+    ├── BenchmarkPanel
+    ├── StudentPanel
+    └── MultiSizeBenchmarkPanel
+
+Multi-size Benchmark
+    ↓
+Lightweight benchmark runner
+    ↓
+Same generated dataset per input size
+    ↓
+Table + Time vs Input Size chart
+```
+
+## Repository
+
+GitHub repository:
+https://github.com/nhokzanpy/Sorting-Algorithm-Visualizer
+
+## Notes
+
+The application intentionally stays within the defined project scope. It does not implement external sorting, distributed processing, parallel sorting, or advanced sorting algorithms outside the four selected algorithms.

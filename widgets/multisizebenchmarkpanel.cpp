@@ -1516,26 +1516,29 @@ MultiSizeBenchmarkPanel::selectedSizes() const
         customParts
         )
     {
-        bool ok =
-            false;
+        bool ok = false;
 
+        const QString trimmedPart =
+            part.trimmed();
 
         const int value =
-            part
-                .trimmed()
-                .toInt(
-                    &ok
-                    );
-
+            trimmedPart.toInt(
+                &ok
+                );
 
         if (
-            ok
+            !ok ||
+            trimmedPart.isEmpty() ||
+            value <= 0 ||
+            value > MultiSizeBenchmarkRunner::MaxInputSize
             )
         {
-            addSize(
-                value
-                );
+            return {};
         }
+
+        addSize(
+            value
+            );
     }
 
 

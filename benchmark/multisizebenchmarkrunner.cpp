@@ -560,7 +560,8 @@ MultiSizeBenchmarkRunner::run(
     for (int size : sizes)
     {
         if (
-            size <= 0
+            size <= 0 ||
+            size > MultiSizeBenchmarkRunner::MaxInputSize
             )
         {
             continue;

@@ -2,6 +2,7 @@
 #define VISUALIZERPAGE_H
 
 #include <QWidget>
+#include <QString>
 #include <QTimer>
 #include <vector>
 
@@ -29,7 +30,7 @@ private slots:
 
 private:
     void setupUi();
-    void loadInputData();
+    bool loadInputData();
     void updateStatistics();
 
     ControlsPanel *m_controlsPanel;
@@ -54,6 +55,10 @@ private:
     std::size_t m_displayComparisons = 0;
     std::size_t m_displaySwaps = 0;
     std::size_t m_displayMoves = 0;
+
+    QString m_lastSortedInput;
+    QString m_lastSortedAlgorithm;
+    bool m_hasSortedSession = false;
 };
 
 #endif // VISUALIZERPAGE_H

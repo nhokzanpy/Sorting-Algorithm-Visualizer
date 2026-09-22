@@ -521,6 +521,9 @@ void VisualizerPage::generateRandomData()
 
     m_statistics.reset();
 
+    m_lastSortedInput.clear();
+    m_lastSortedAlgorithm.clear();
+    m_hasSortedSession = false;
 
     updateStatistics();
 
@@ -535,10 +538,9 @@ void VisualizerPage::generateRandomData()
 // Input
 // =========================================================
 
-void VisualizerPage::loadInputData()
+bool VisualizerPage::loadInputData()
 {
     m_originalData.clear();
-
 
     const QStringList values =
         m_controlsPanel
@@ -548,27 +550,35 @@ void VisualizerPage::loadInputData()
                 Qt::SkipEmptyParts
                 );
 
+    if (values.isEmpty())
+    {
+        return false;
+    }
 
     for (const QString &value : values)
     {
         bool ok = false;
 
+        const QString trimmedValue =
+            value.trimmed();
 
         const int number =
-            value
-                .trimmed()
-                .toInt(
-                    &ok
-                    );
-
-
-        if (ok)
-        {
-            m_originalData.push_back(
-                number
+            trimmedValue.toInt(
+                &ok
                 );
+
+        if (!ok || trimmedValue.isEmpty())
+        {
+            m_originalData.clear();
+            return false;
         }
+
+        m_originalData.push_back(
+            number
+            );
     }
+
+    return !m_originalData.empty();
 }
 
 
@@ -578,11 +588,30 @@ void VisualizerPage::loadInputData()
 
 void VisualizerPage::startSorting()
 {
-    loadInputData();
+    m_timer.stop();
 
+    const QString currentInput =
+        m_controlsPanel
+            ->inputText();
 
-    if (m_originalData.empty())
+    const QString currentAlgorithm =
+        m_controlsPanel
+            ->selectedAlgorithm();
+
+    if (!loadInputData())
     {
+        m_steps.clear();
+        m_currentStep = 0;
+        m_displayComparisons = 0;
+        m_displaySwaps = 0;
+        m_displayMoves = 0;
+        m_statistics.reset();
+        m_lastSortedInput.clear();
+        m_lastSortedAlgorithm.clear();
+        m_hasSortedSession = false;
+        m_visualizer->setData({});
+        updateStatistics();
+
         m_statisticsPanel->setStatus(
             "Invalid input"
             );
@@ -590,15 +619,21 @@ void VisualizerPage::startSorting()
         return;
     }
 
+    const bool sessionChanged =
+        !m_hasSortedSession ||
+        currentInput != m_lastSortedInput ||
+        currentAlgorithm != m_lastSortedAlgorithm;
 
-    if (m_steps.empty())
+    if (sessionChanged)
     {
-        const QString algorithm =
-            m_controlsPanel
-                ->selectedAlgorithm();
+        m_steps.clear();
+        m_currentStep = 0;
+        m_displayComparisons = 0;
+        m_displaySwaps = 0;
+        m_displayMoves = 0;
+        m_statistics.reset();
 
-
-        if (algorithm == "Bubble Sort")
+        if (currentAlgorithm == "Bubble Sort")
         {
             m_steps =
                 BubbleSort::sort(
@@ -606,10 +641,7 @@ void VisualizerPage::startSorting()
                     m_statistics
                     );
         }
-        else if (
-            algorithm ==
-            "Selection Sort"
-            )
+        else if (currentAlgorithm == "Selection Sort")
         {
             m_steps =
                 SelectionSort::sort(
@@ -617,10 +649,7 @@ void VisualizerPage::startSorting()
                     m_statistics
                     );
         }
-        else if (
-            algorithm ==
-            "Insertion Sort"
-            )
+        else if (currentAlgorithm == "Insertion Sort")
         {
             m_steps =
                 InsertionSort::sort(
@@ -628,10 +657,7 @@ void VisualizerPage::startSorting()
                     m_statistics
                     );
         }
-        else if (
-            algorithm ==
-            "Merge Sort"
-            )
+        else if (currentAlgorithm == "Merge Sort")
         {
             m_steps =
                 MergeSort::sort(
@@ -639,22 +665,37 @@ void VisualizerPage::startSorting()
                     m_statistics
                     );
         }
+        else
+        {
+            m_statisticsPanel->setStatus(
+                "Invalid algorithm"
+                );
 
+            return;
+        }
 
-        m_currentStep = 0;
+        m_lastSortedInput =
+            currentInput;
 
+        m_lastSortedAlgorithm =
+            currentAlgorithm;
 
-        m_displayComparisons = 0;
-        m_displaySwaps = 0;
-        m_displayMoves = 0;
-
+        m_hasSortedSession = true;
 
         m_visualizer->setData(
             m_originalData
             );
 
-
         updateStatistics();
+    }
+
+    if (m_currentStep >= static_cast<int>(m_steps.size()))
+    {
+        m_statisticsPanel->setStatus(
+            "Sorting complete"
+            );
+
+        return;
     }
 
     const int delay =
@@ -662,6 +703,9 @@ void VisualizerPage::startSorting()
         m_controlsPanel
             ->speedValue();
 
+    m_statisticsPanel->setStatus(
+        "Running"
+        );
 
     m_timer.start(
         delay
@@ -692,14 +736,15 @@ void VisualizerPage::nextStep()
 {
     m_timer.stop();
 
-
     if (m_steps.empty())
     {
         startSorting();
 
-        m_timer.stop();
+        if (m_steps.empty())
+        {
+            return;
+        }
     }
-
 
     processNextStep();
 }
@@ -727,6 +772,10 @@ void VisualizerPage::resetSorting()
 
 
     m_statistics.reset();
+
+    m_lastSortedInput.clear();
+    m_lastSortedAlgorithm.clear();
+    m_hasSortedSession = false;
 
 
     m_visualizer->setData(

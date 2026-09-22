@@ -8,6 +8,8 @@
 class MultiSizeBenchmarkRunner
 {
 public:
+    static constexpr int MaxInputSize = 5000;
+
     static std::vector<MultiSizeBenchmarkResult> run(
         const std::vector<int> &sizes
         );
